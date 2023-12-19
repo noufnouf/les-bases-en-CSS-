@@ -1,0 +1,365 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --rose: pink;
+  --blanc-grisé: rgb(250, 249, 249);
+  --bleuPetrole: rgb(13, 13, 154);
+  --Or: rgb(253, 230, 188);
+}
+body {
+  background: url(./Asset/image/bg.jpg) no-repeat center/cover;
+  height: 100vh;
+  font-family: Gluten;
+  color: var(--blanc-grisé);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.card {
+  background: rgba(0, 0, 0, 0.294);
+  box-shadow: 1px 1px 7px black;
+  border-radius: 5px;
+  width: calc(100% - 300px);
+  height: auto;
+  padding: 20px;
+  backdrop-filter: blur(1.4px);
+  z-index: 1;
+}
+.card::before {
+  content: "\2606";
+  position: absolute;
+  right: 3%;
+  top: 0;
+}
+h1 {
+  margin-bottom: 24px;
+  background-image: linear-gradient(
+    135deg,
+    rgb(49, 40, 227) 0%,
+    rgba(122, 189, 38, 1) 8%,
+    rgba(121, 9, 107, 1) 26%,
+    rgba(232, 212, 16, 1) 49%,
+    rgba(0, 212, 255, 1) 78%,
+    rgba(255, 0, 0, 1) 96%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+/* ! animation  */
+
+h1::after {
+  content: "";
+  font-size: 2rem;
+  position: absolute;
+  background: var(--rose);
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%) scaleX(0);
+  animation: h1anime 2s ease-in-out infinite;
+}
+@keyframes h1anime {
+  100% {
+    transform: translateX(-50%) scaleX(1);
+    transform-origin: var(--rose);
+  }
+  50% {
+    transform-origin: right;
+
+    background: green;
+  }
+  0% {
+    background: yellow;
+    transform-origin: left;
+  }
+}
+/* ! animation  */
+
+.grid-contenair {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+.polygone-contenaire {
+  filter: drop-shadow(-3px 18px 15px var(--blanc-grisé));
+  place-self: center left;
+  /* metre le parets en grid */
+}
+.polygon {
+  clip-path: polygon(
+    0% 15%,
+    15% 15%,
+    15% 0%,
+    85% 0%,
+    85% 15%,
+    100% 15%,
+    100% 85%,
+    85% 85%,
+    85% 100%,
+    15% 100%,
+    15% 85%,
+    0% 85%
+  );
+  background: linear-gradient(
+    135deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(122, 189, 38, 1) 8%,
+    rgba(121, 9, 107, 1) 26%,
+    rgba(232, 212, 16, 1) 49%,
+    rgba(0, 212, 255, 1) 78%,
+    rgba(255, 0, 0, 1) 96%
+  );
+  height: 100px;
+  width: 100px;
+}
+.polygon::after {
+  content: "Un text";
+  position: absolute;
+  width: 110px;
+  color: var(--blanc-grisé);
+  text-align: center;
+  background: black;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(50deg);
+  /*! transferer son propre poin centrale */
+  padding: 5px;
+}
+p {
+  line-height: 26px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  /* ! pour couper dans un texte le nombre de ligne  */
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-align: justify;
+  margin-bottom: 10px;
+}
+p::selection {
+  background: var(--rose);
+  color: teal;
+}
+/* *checkbox-contenainer */
+.checkbox-contenainer {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0 30px;
+  perspective:50px ;
+}
+input[type="checkbox"]:checked + label {
+  background: var(--bleuPetrole);
+  color: var(--blanc-grisé);
+  transform: scale(1.05);
+  filter: blur(1px);
+}
+input[type="checkbox"] {
+  display: none;
+}
+label {
+  cursor: pointer;
+  border: 1px solid var(--blanc-grisé);
+  background: var(--Or);
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+  transition: 0.3s;
+  user-select: none;
+}
+
+label:first-of-type:hover{
+  animation: label1  3s infinite linear ;
+}
+@keyframes label1 {
+  100%{
+    transform:translateX(60px) scale(1.9);
+    
+  }
+  95%{
+    transform:translateX(-60px) scale(1.8);
+  }
+  90%{
+    transform:translateX(40px) scale(1.7);
+  }
+  75%{
+    transform:translateX(-40px) scale(1.6);
+  }
+  50%{
+    transform:translateX(20px) scale(1.5);
+  }
+  
+  25%{
+    transform:translateX(-20px) scale(1.4);
+  }
+  5%{
+    transform:translateX(10px) scale(1.3);
+  }
+  0%{
+    transform:translateX(-5px) scale(1.1);
+  }
+}
+label:nth-child(4):hover{
+  animation: label2 5s infinite;
+
+}
+@keyframes label2 {
+ 
+  33%{
+    transform: translateZ(90px);
+  }
+  66%{
+    transform:translateZ(66px)
+  }
+  100%{
+    transform: translateZ(0);
+  }
+
+}
+
+/* * class e-mail */
+.e-mail {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.e-mail input {
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  transition: 0.3s;
+  text-align: center;
+  font-size: 1.1rem;
+  width: 35%;
+  max-width: 300px;
+  min-width: 150px;
+  transition: 3s;
+  background: radial-gradient(
+    circle,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+}
+
+input[type="text"]:focus {
+  color: var(--blanc-grisé);
+  transform: scale(1.5);
+  background: radial-gradient(
+    circle,
+    rgba(34, 192, 195, 0.5) 0%,
+    rgba(253, 187, 45, 0.497) 100%
+  );
+}
+/* ! ca c'est lorsqu’on est sur l'element a interagir pour lui mettre les instruction au sein de l'interaction   */
+
+input[type="text"]::placeholder/* ! ca c'est pour le sélectionné un element autre qui est dans les balise html remarque les deux point avant la placeholder */ {
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: Gluten;
+}
+button {
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  font-size: 1.3rem;
+  border-radius: 50px;
+  background: var(--Or);
+  color: var(--blanc-grisé);
+  transition: 0.5s;
+}
+button:hover {
+  
+  letter-spacing: 10px;
+  color: black;
+}
+button:active {
+  transform: scale(1.5);
+}
+
+a {
+  color: var(--rose);
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+  transform: translateY(20px);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+  
+}
+button:hover + a, 
+a:hover{
+/*sa sa veut dire que lorsque on survole l'element button tu interagi sur le a */ 
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* a:hover{
+  opacity: 1;
+  transform: translateY(0);
+} */
+
+
+
+a:visited {
+  color: var(--Or);
+}
+img{
+  width: 3%;
+  position: absolute;
+  filter: drop-shadow(0px 9px 5px rgb(202, 150, 7));
+  z-index: 0;
+  animation: spacechip 6s infinite linear;
+}
+@keyframes spacechip {
+  0%{
+    top: 2%;
+    left: 2%;
+    transform: scale(1.5) rotate(90deg);
+  }
+  10%{
+    top: 10%;
+    left: 10%;
+    transform: scale(1.9) rotate(95deg);
+  }
+  20%{
+    top: 5%;
+    left: 90%;
+    transform: scale(3)rotate(200deg);
+    z-index: 40;
+  }
+  50%{
+    top: 80%;
+   left: 90%;
+    transform: rotate(300deg);
+  }
+  70%{
+    top: 95%;
+    left: 10%;
+    transform: rotate(350deg);
+    z-index: 0;
+  }
+  100%{
+    top: 2%;
+    left: 2%;
+    transform: rotate(60deg);
+  }
+  
+  
+  
+  
+  
+}
